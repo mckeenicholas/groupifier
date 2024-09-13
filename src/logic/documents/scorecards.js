@@ -366,57 +366,69 @@ const scorecard = ({
       alignment: 'center',
     },
     {
-      margin: [25, 0, 0, 0],
-      table: {
-        widths: ['*', 'auto', 'auto', ...(printStations ? ['auto'] : [])],
-        body: [
-          columnLabels([
-            'Event',
-            'Round',
-            'Group',
-            ...(printStations ? ['Station'] : []),
-          ]),
-          [
-            eventId ? eventNameById(eventId) : ' ',
-            { text: roundNumber, alignment: 'center' },
-            { text: groupNumber, alignment: 'center' },
-            ...(printStations
-              ? [{ text: stationNumber, alignment: 'center' }]
-              : []),
-          ],
-        ],
-      },
-    },
-    {
-      margin: [25, 0, 0, 0],
-      table: {
-        widths: [30, '*'],
-        body: [
-          columnLabels([
-            'ID',
-            [
-              { text: 'Name', alignment: 'left', width: 'auto' },
-              {
-                text:
-                  competitor.wcaId ||
-                  // If the competitor has a name, then this is a new competitor
-                  // Else this is a blank scorecard
-                  (competitor.name ? 'New competitor' : ' '),
-                alignment: 'right',
-              },
-            ],
-          ]),
-          [
-            { text: competitor.registrantId || ' ', alignment: 'center' },
-            {
-              text: pdfName(competitor.name || ' ', {
-                swapLatinWithLocalNames: localNamesFirst,
-              }),
-              maxHeight: 20 /* See: https://github.com/bpampuch/pdfmake/issues/264#issuecomment-108347567 */,
+      columns: [
+        {
+          width: '25%',
+          qr: `${competitor.registrantId}-${eventId}-${roundNumber}`,
+          fit: '80',
+          margin: [0, 10, 0, 0],
+        },
+        [
+          {
+            margin: [10, 0, 0, 0],
+            table: {
+              widths: ['*', 'auto', 'auto', ...(printStations ? ['auto'] : [])],
+              body: [
+                columnLabels([
+                  'Event',
+                  'Round',
+                  'Group',
+                  ...(printStations ? ['Station'] : []),
+                ]),
+                [
+                  eventId ? eventNameById(eventId) : ' ',
+                  { text: roundNumber, alignment: 'center' },
+                  { text: groupNumber, alignment: 'center' },
+                  ...(printStations
+                    ? [{ text: stationNumber, alignment: 'center' }]
+                    : []),
+                ],
+              ],
             },
-          ],
+          },
+          {
+            margin: [10, 0, 0, 0],
+            table: {
+              widths: [30, '*'],
+              body: [
+                columnLabels([
+                  'ID',
+                  [
+                    { text: 'Name', alignment: 'left', width: 'auto' },
+                    {
+                      text:
+                        competitor.wcaId ||
+                        // If the competitor has a name, then this is a new competitor
+                        // Else this is a blank scorecard
+                        (competitor.name ? 'New competitor' : ' '),
+                      alignment: 'right',
+                    },
+                  ],
+                ]),
+                [
+                  { text: competitor.registrantId || ' ', alignment: 'center' },
+                  {
+                    text: pdfName(competitor.name || ' ', {
+                      swapLatinWithLocalNames: localNamesFirst,
+                    }),
+                    maxHeight: 20 /* See: https://github.com/bpampuch/pdfmake/issues/264#issuecomment-108347567 */,
+                  },
+                ],
+              ],
+            },
+          },
         ],
-      },
+      ],
     },
     {
       margin: [0, 10, 0, 0],
@@ -555,7 +567,7 @@ const coverSheet = ({
   ];
 };
 
-const initialsField = (person) => ({
+const initialsField = person => ({
   text: [{ text: `${person} initials`, bold: true }, ' ______'],
   alignment: 'center',
   fontSize: 10,
