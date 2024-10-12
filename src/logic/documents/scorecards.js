@@ -367,12 +367,6 @@ const scorecard = ({
     },
     {
       columns: [
-        {
-          width: '25%',
-          qr: `${competitor.registrantId}-${eventId}-${roundNumber}`,
-          fit: '80',
-          margin: [0, 10, 0, 0],
-        },
         [
           {
             margin: [10, 0, 0, 0],
@@ -428,6 +422,12 @@ const scorecard = ({
             },
           },
         ],
+        {
+          width: '25%',
+          qr: `${competitor.registrantId}-${eventId}-${roundNumber}`,
+          fit: '80',
+          margin: [5, 10, 0, 0],
+        },
       ],
     },
     {
