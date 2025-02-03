@@ -16,34 +16,35 @@
     "url": "https://github.com/jonatanklosko/groupifier.git"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "bin/bundle_fonts.sh && react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "start": "vite",
+    "build": "bin/bundle_fonts.sh && vite build",
+    "test": "vite test --env=jsdom",
     "eject": "react-scripts eject",
     "postinstall": "bin/bundle_fonts.sh"
   },
   "dependencies": {
-    "@cubing/icons": "^1.0.6",
-    "@material-ui/core": "^4.9.0",
-    "@material-ui/icons": "^4.5.1",
-    "@material-ui/styles": "^4.9.0",
-    "classnames": "^2.2.6",
-    "pdfmake": "^0.1.54",
-    "react": "^16.12.0",
-    "react-app-polyfill": "^1.0.3",
+    "@cubing/icons": "^1.1.3",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@material-ui/styles": "^4.11.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "classnames": "^2.5.1",
+    "pdfmake": "^0.1.72",
+    "react": "^16.14.0",
+    "react-app-polyfill": "^1.0.6",
     "react-beautiful-dnd": "^12.2.0",
-    "react-dom": "^16.12.0",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.1.1",
-    "smoothscroll-polyfill": "^0.4.4"
+    "react-dom": "^16.14.0",
+    "react-router-dom": "^5.3.4",
+    "smoothscroll-polyfill": "^0.4.4",
+    "vite": "^6.0.11"
   },
   "devDependencies": {
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "husky": "^3.0.5",
-    "lint-staged": "^9.2.5",
-    "prettier": "^1.18.2",
-    "react-test-renderer": "^16.9.0"
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.8",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "react-test-renderer": "^16.14.0"
   },
   "browserslist": [
     ">0.2%",

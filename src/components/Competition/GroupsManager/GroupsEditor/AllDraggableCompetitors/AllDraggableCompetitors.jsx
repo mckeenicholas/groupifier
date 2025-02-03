@@ -59,43 +59,46 @@ const AllDraggableCompetitors = React.memo(({ wcif, roundId, search }) => {
     return [withGroup, withoutGroup, sortedOtherPeople];
   }, [wcif, roundId, eventId]);
 
-  const withoutGroupItems = searchPeople(withoutGroup, search).map(
-    (person, index) => (
-      <DraggableCompetitor
-        key={person.wcaUserId}
-        person={person}
-        draggableId={`${person.registrantId}:${person.assignments.length}`}
-        index={index}
-        averageLabelEventId={eventId}
-      />
-    )
-  );
+  const withoutGroupItems = searchPeople(
+    withoutGroup,
+    search
+  ).map((person, index) => (
+    <DraggableCompetitor
+      key={person.wcaUserId}
+      person={person}
+      draggableId={`${person.registrantId}:${person.assignments.length}`}
+      index={index}
+      averageLabelEventId={eventId}
+    />
+  ));
 
-  const withGroupItems = searchPeople(withGroup, search).map(
-    (person, index) => (
-      <DraggableCompetitor
-        key={person.wcaUserId}
-        person={person}
-        draggableId={`${person.registrantId}:${person.assignments.length}`}
-        index={withoutGroup.length + index}
-        averageLabelEventId={eventId}
-        className={classes.opacity}
-      />
-    )
-  );
+  const withGroupItems = searchPeople(
+    withGroup,
+    search
+  ).map((person, index) => (
+    <DraggableCompetitor
+      key={person.wcaUserId}
+      person={person}
+      draggableId={`${person.registrantId}:${person.assignments.length}`}
+      index={withoutGroup.length + index}
+      averageLabelEventId={eventId}
+      className={classes.opacity}
+    />
+  ));
 
-  const otherPeopleItems = searchPeople(otherPeople, search).map(
-    (person, index) => (
-      <DraggableCompetitor
-        key={person.wcaUserId}
-        person={person}
-        draggableId={`${person.registrantId}:${person.assignments.length}`}
-        index={withoutGroup.length + withGroup.length + index}
-        averageLabelEventId={eventId}
-        className={classes.opacity}
-      />
-    )
-  );
+  const otherPeopleItems = searchPeople(
+    otherPeople,
+    search
+  ).map((person, index) => (
+    <DraggableCompetitor
+      key={person.wcaUserId}
+      person={person}
+      draggableId={`${person.registrantId}:${person.assignments.length}`}
+      index={withoutGroup.length + withGroup.length + index}
+      averageLabelEventId={eventId}
+      className={classes.opacity}
+    />
+  ));
 
   return (
     <Fragment>
